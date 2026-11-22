@@ -1,0 +1,7 @@
+vm
+*.o
+correct.txt
+esperado.txt
+addresses.txt
+BACKING_STORE.bin
+*.tar
