@@ -87,4 +87,38 @@ nothing added to commit but untracked files present (use "git add" to track)
 [?2004lrm -f vm correct.txt
 [?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ make
 [?2004lgcc -Wall -Wextra -g -o vm vm.c -pthread
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ make clean
+[?2004lrm -f vm correct.txt
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ make
+[?2004lgcc -Wall -Wextra -g -o vm vm.c -pthread
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [7m./vm addresses.txt lru fifo[27m./vm addresses.txt lru fifo
+[?2004l[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [7mtail -5 correct.txt[27mtail -5 correct.txt
+[?2004lNumber of Translated Addresses = 1000
+Page Faults = 244
+Page Fault Rate = 0.244
+TLB Hits = 0
+TLB Hit Rate = 0.000
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [7mdiff correct.txt esperado.txt | head -20[27mdiff correct.txt esperado.txt | head -20
+[?2004l1,1000c1,1000
+< Virtual address: 16916 TLB: -1 Physical address: 20 Value: 0
+< Virtual address: 62493 TLB: -1 Physical address: 285 Value: 0
+< Virtual address: 30198 TLB: -1 Physical address: 758 Value: 29
+< Virtual address: 53683 TLB: -1 Physical address: 947 Value: 108
+< Virtual address: 40185 TLB: -1 Physical address: 1273 Value: 0
+< Virtual address: 28781 TLB: -1 Physical address: 1389 Value: 0
+< Virtual address: 24462 TLB: -1 Physical address: 1678 Value: 23
+< Virtual address: 48399 TLB: -1 Physical address: 1807 Value: 67
+< Virtual address: 64815 TLB: -1 Physical address: 2095 Value: 75
+< Virtual address: 18295 TLB: -1 Physical address: 2423 Value: -35
+< Virtual address: 12218 TLB: -1 Physical address: 2746 Value: 11
+< Virtual address: 22760 TLB: -1 Physical address: 3048 Value: 0
+< Virtual address: 57982 TLB: -1 Physical address: 3198 Value: 56
+< Virtual address: 27966 TLB: -1 Physical address: 3390 Value: 27
+< Virtual address: 54894 TLB: -1 Physical address: 3694 Value: 53
+< Virtual address: 38929 TLB: -1 Physical address: 3857 Value: 0
+< Virtual address: 32865 TLB: -1 Physical address: 4193 Value: 0
+< Virtual address: 64243 TLB: -1 Physical address: 4595 Value: -68
+< Virtual address: 2315 TLB: -1 Physical address: 4619 Value: 66
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [7mdiff <(awk '{print $NF}' correct.txt | head -1000) <(awk[27m[7m [27m[7m'{print $NF}' esperado.txt | head -1000) && echo "VALUES IGUAIS"[27m[Adiff <(awk '{print $NF}' correct.txt | head -1000) <(awk '{print $NF}' esperado.txt | head -1000) && echo "VALUES IGUAIS"
+[?2004lVALUES IGUAIS
 [?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ 

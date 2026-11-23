@@ -6,8 +6,14 @@
 #define PAGE_SIZE    256
 #define NUM_PAGES    256
 #define MAX_ENDERECO 65535
+#define FRAMES       256
 
 enum { FIFO, LRU };
+
+static int tabela_paginas[NUM_PAGES];
+static signed char memoria[FRAMES * PAGE_SIZE];
+static int proximo_frame = 0;
+static int page_faults = 0;
 
 static int le_algoritmo(const char *s)
 {
@@ -71,6 +77,19 @@ static int *le_enderecos(const char *nome, int *qtd)
     return v;
 }
 
+static int carrega_pagina(FILE *bs, int pagina)
+{
+    int frame = proximo_frame++;
+    if (fseek(bs, (long) pagina * PAGE_SIZE, SEEK_SET) != 0
+        || fread(&memoria[frame * PAGE_SIZE], 1, PAGE_SIZE, bs) != PAGE_SIZE) {
+        fprintf(stderr, "Erro: falha ao ler a página %d do BACKING_STORE.bin\n", pagina);
+        return -1;
+    }
+    tabela_paginas[pagina] = frame;
+    page_faults++;
+    return frame;
+}
+
 int main(int argc, char *argv[])
 {
     if (argc != 4) {
@@ -88,13 +107,49 @@ int main(int argc, char *argv[])
     int *enderecos = le_enderecos(argv[1], &qtd);
     if (enderecos == NULL) return 1;
 
-    for (int i = 0; i < qtd && i < 5; i++) {
+    FILE *bs = fopen("BACKING_STORE.bin", "rb");
+    if (bs == NULL) {
+        fprintf(stderr, "Erro: não foi possível abrir 'BACKING_STORE.bin': %s\n", strerror(errno));
+        free(enderecos);
+        return 1;
+    }
+    FILE *saida = fopen("correct.txt", "w");
+    if (saida == NULL) {
+        fprintf(stderr, "Erro: não foi possível criar 'correct.txt': %s\n", strerror(errno));
+        fclose(bs);
+        free(enderecos);
+        return 1;
+    }
+
+    for (int i = 0; i < NUM_PAGES; i++)
+        tabela_paginas[i] = -1;
+
+    for (int i = 0; i < qtd; i++) {
         int pagina = (enderecos[i] >> 8) & 0xFF;
         int offset = enderecos[i] & 0xFF;
-        printf("%d -> página %d, offset %d\n", enderecos[i], pagina, offset);
-    }
-    printf("%d endereços lidos\n", qtd);
 
+        int frame = tabela_paginas[pagina];
+        if (frame == -1) {
+            frame = carrega_pagina(bs, pagina);
+            if (frame == -1) {
+                fclose(saida); fclose(bs); free(enderecos);
+                return 1;
+            }
+        }
+
+        int fisico = frame * PAGE_SIZE + offset;
+        fprintf(saida, "Virtual address: %d TLB: %d Physical address: %d Value: %d\n",
+                enderecos[i], -1, fisico, memoria[fisico]);
+    }
+
+    fprintf(saida, "Number of Translated Addresses = %d\n", qtd);
+    fprintf(saida, "Page Faults = %d\n", page_faults);
+    fprintf(saida, "Page Fault Rate = %.3f\n", (double) page_faults / qtd);
+    fprintf(saida, "TLB Hits = %d\n", 0);
+    fprintf(saida, "TLB Hit Rate = %.3f\n", 0.0);
+
+    fclose(saida);
+    fclose(bs);
     free(enderecos);
     return 0;
 }
