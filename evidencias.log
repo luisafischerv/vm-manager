@@ -1,0 +1,90 @@
+Script started on 2026-11-22 20:09:44-03:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="147" LINES="12"]
+[?2004h]0;lfvm@Lusa-Notebook: ~/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m~/vm-manager[00m$ [7mdate; uname -a; gcc --version | head -1; make --version | head -1[27m[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cdate; uname -a; gcc --version | head -1; make --version | head -1
+[?2004lSun Nov 22 20:09:53 -03 2026
+Linux Lusa-Notebook 6.18.33.2-microsoft-standard-WSL2 #1 SMP PREEMPT_DYNAMIC Thu Jun 18 21:54:43 UTC 2026 x86_64 GNU/Linux
+gcc (Ubuntu 15.2.0-16ubuntu1) 15.2.0
+GNU Make 4.4.1
+[?2004h]0;lfvm@Lusa-Notebook: ~/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m~/vm-manager[00m$ code .
+[?2004l[?2004h]0;lfvm@Lusa-Notebook: ~/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m~/vm-manager[00m$ 
+Script done on 2026-11-22 20:10:33-03:00 [COMMAND_EXIT_CODE="0"]
+Script started on 2026-11-22 20:32:41-03:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="94" LINES="12"]
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [7mls -l; wc -l addresses.txt esperado.txt[27mls -l; wc -l addresses.txt esperado.txt
+[?2004ltotal 144
+-rwxrwxrwx 1 lfvm lfvm 65536 Nov 22 20:18 [0m[01;32mBACKING_STORE.bin[0m
+-rwxrwxrwx 1 lfvm lfvm   535 Nov 22 20:30 [01;32mREADME.md[0m
+-rwxrwxrwx 1 lfvm lfvm  5831 Nov 22 20:18 [01;32maddresses.txt[0m
+-rwxrwxrwx 1 lfvm lfvm 63577 Nov 22 20:18 [01;32mesperado.txt[0m
+-rwxrwxrwx 1 lfvm lfvm  1347 Nov 22 20:32 [01;32mevidencias.log[0m
+ 1000 addresses.txt
+ 1005 esperado.txt
+ 2005 total
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [7mgit status[27mgit status
+[?2004lOn branch main
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+	[32mnew file:   .gitignore[m
+	[32mnew file:   README.md[m
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	[31mmodified:   .gitignore[m
+	[31mmodified:   README.md[m
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	[31mevidencias.log[m
+
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ Script started on 2026-11-23 17:10:37-03:00 [TERM="xterm-256color" TTY="/dev/pts/2" COLUMNS="106" LINES="12"]
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ date
+[?2004lMon Nov 23 17:10:45 -03 2026
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ make clean
+[?2004lrm -f vm correct.txt
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ make
+[?2004lgcc -Wall -Wextra -g -o vm vm.c -pthread
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [7m./vm addresses.txt lru fifo[27m./vm addresses.txt lru fifo
+[?2004l16916 -> página 66, offset 20
+62493 -> página 244, offset 29
+30198 -> página 117, offset 246
+53683 -> página 209, offset 179
+40185 -> página 156, offset 249
+1000 endereços lidos
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ ./vm
+[?2004lUso: ./vm <arquivo_de_enderecos> <fifo|lru> <fifo|lru>
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [7m./vm addresses.txt lru[27m./vm addresses.txt lru
+[?2004lUso: ./vm <arquivo_de_enderecos> <fifo|lru> <fifo|lru>
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [7m./vm addresses.txt LRU fifo[27m./vm addresses.txt LRU fifo
+[?2004lErro: algoritmo inválido ('LRU', 'fifo'); use fifo ou lru
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [7m./vm nao_existe.txt lru fifo[27m./vm nao_existe.txt lru fifo
+[?2004lErro: não foi possível abrir 'nao_existe.txt': No such file or directory
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [7mprintf '1\nabc\n' > /tmp/t.txt[27mprintf '1\nabc\n' > /tmp/t.txt
+[?2004l[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [7m./vm /tmp/t.txt fifo lru[27m./vm /tmp/t.txt fifo lru
+[?2004lErro: formato inválido em '/tmp/t.txt', linha 2: "abc" (esperado um inteiro entre 0 e 65535 por linha)
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [7mprintf '1\n70000\n' > /tmp/t.txt[27mprintf '1\n70000\n' > /tmp/t.txt
+[?2004l[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [7m./vm /tmp/t.txt fifo lru[27m./vm /tmp/t.txt fifo lru
+[?2004lErro: formato inválido em '/tmp/t.txt', linha 2: "70000" (esperado um inteiro entre 0 e 65535 por linha)
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [7mgit config core.fileMode false[27mgit config core.fileMode false
+[?2004l[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [7mgit status[27mgit status
+[?2004lOn branch main
+Your branch is based on 'origin/main', but the upstream is gone.
+  (use "git branch --unset-upstream" to fixup)
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	[31mMakefile[m
+	[31mevidencias.log[m
+	[31mvm.c[m
+
+nothing added to commit but untracked files present (use "git add" to track)
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [7mhead -3 vm.c  [27mhead -3 vm.c  
+[?2004l#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ make cel[K[Klean
+[?2004lrm -f vm correct.txt
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ make
+[?2004lgcc -Wall -Wextra -g -o vm vm.c -pthread
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ 
