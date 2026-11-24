@@ -6,14 +6,34 @@
 #define PAGE_SIZE    256
 #define NUM_PAGES    256
 #define MAX_ENDERECO 65535
-#define FRAMES       256
+#ifndef FRAMES
+#define FRAMES       128
+#endif
 
 enum { FIFO, LRU };
 
 static int tabela_paginas[NUM_PAGES];
 static signed char memoria[FRAMES * PAGE_SIZE];
+static int pagina_do_frame[FRAMES];
+static long ultimo_uso[FRAMES];
+static long relogio = 0;
 static int proximo_frame = 0;
+static int proximo_fifo = 0;
 static int page_faults = 0;
+
+static int escolhe_vitima(int alg)
+{
+    if (alg == FIFO) {
+        int v = proximo_fifo;
+        proximo_fifo = (proximo_fifo + 1) % FRAMES;
+        return v;
+    }
+    int v = 0;
+    for (int f = 1; f < FRAMES; f++)
+        if (ultimo_uso[f] < ultimo_uso[v])
+            v = f;
+    return v;
+}
 
 static int le_algoritmo(const char *s)
 {
@@ -50,8 +70,7 @@ static int *le_enderecos(const char *nome, int *qtd)
         errno = 0;
         long x = strtol(linha, &fim, 10);
 
-        if (linha[0] == '\0' || *fim != '\0' || linha[0] == '-' || linha[0] == '+'
-            || errno == ERANGE || x < 0 || x > MAX_ENDERECO) {
+        if (linha[0] == '\0' || *fim != '\0' || linha[0] == '-' || linha[0] == '+' || errno == ERANGE || x < 0 || x > MAX_ENDERECO) {
             fprintf(stderr, "Erro: formato inválido em '%s', linha %d: \"%s\" "
                             "(esperado um inteiro entre 0 e %d por linha)\n",
                     nome, num_linha, linha, MAX_ENDERECO);
@@ -77,15 +96,20 @@ static int *le_enderecos(const char *nome, int *qtd)
     return v;
 }
 
-static int carrega_pagina(FILE *bs, int pagina)
+static int carrega_pagina(FILE *bs, int pagina, int alg)
 {
-    int frame = proximo_frame++;
-    if (fseek(bs, (long) pagina * PAGE_SIZE, SEEK_SET) != 0
-        || fread(&memoria[frame * PAGE_SIZE], 1, PAGE_SIZE, bs) != PAGE_SIZE) {
+    int frame;
+    if (proximo_frame < FRAMES) {
+        frame = proximo_frame++;
+    } else {
+        frame = escolhe_vitima(alg);
+    }
+    if (fseek(bs, (long) pagina * PAGE_SIZE, SEEK_SET) != 0 || fread(&memoria[frame * PAGE_SIZE], 1, PAGE_SIZE, bs) != PAGE_SIZE) {
         fprintf(stderr, "Erro: falha ao ler a página %d do BACKING_STORE.bin\n", pagina);
         return -1;
     }
     tabela_paginas[pagina] = frame;
+    pagina_do_frame[frame] = pagina;
     page_faults++;
     return frame;
 }
@@ -130,12 +154,14 @@ int main(int argc, char *argv[])
 
         int frame = tabela_paginas[pagina];
         if (frame == -1) {
-            frame = carrega_pagina(bs, pagina);
+            frame = carrega_pagina(bs, pagina, alg_pagina);
             if (frame == -1) {
                 fclose(saida); fclose(bs); free(enderecos);
                 return 1;
             }
         }
+
+        ultimo_uso[frame] = ++relogio;
 
         int fisico = frame * PAGE_SIZE + offset;
         fprintf(saida, "Virtual address: %d TLB: %d Physical address: %d Value: %d\n",
