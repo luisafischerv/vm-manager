@@ -37,7 +37,7 @@ static int tlb_hits = 0;
 static int busca_tlb(int pagina)
 {
     for (int i = 0; i < TLB_SIZE; i++)
-        if (tlb[i].pagina == pagina)
+        if (tlb[i].valida && tlb[i].pagina == pagina)
             return i;
     return -1;
 }
