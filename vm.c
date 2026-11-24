@@ -21,6 +21,43 @@ static int proximo_frame = 0;
 static int proximo_fifo = 0;
 static int page_faults = 0;
 
+#define TLB_SIZE 16
+
+typedef struct {
+    int pagina;
+    int frame;
+    int valida;
+} EntradaTLB;
+
+static EntradaTLB tlb[TLB_SIZE];
+static int tlb_usadas = 0;
+static int tlb_fifo = 0;
+static int tlb_hits = 0;
+
+static int busca_tlb(int pagina)
+{
+    for (int i = 0; i < TLB_SIZE; i++)
+        if (tlb[i].pagina == pagina)
+            return i;
+    return -1;
+}
+
+static int posicao_tlb(void)
+{
+    if (tlb_usadas < TLB_SIZE)
+        return tlb_usadas++;
+    int v = tlb_fifo;
+    tlb_fifo = (tlb_fifo + 1) % TLB_SIZE;
+    return v;
+}
+
+static void invalida_tlb(int pagina)
+{
+    for (int i = 0; i < TLB_SIZE; i++)
+        if (tlb[i].valida && tlb[i].pagina == pagina)
+            tlb[i].valida = 0;
+}
+
 static int escolhe_vitima(int alg)
 {
     if (alg == FIFO) {
@@ -103,6 +140,8 @@ static int carrega_pagina(FILE *bs, int pagina, int alg)
         frame = proximo_frame++;
     } else {
         frame = escolhe_vitima(alg);
+        invalida_tlb(pagina_do_frame[frame]);
+        tabela_paginas[pagina_do_frame[frame]] = -1;
     }
     if (fseek(bs, (long) pagina * PAGE_SIZE, SEEK_SET) != 0 || fread(&memoria[frame * PAGE_SIZE], 1, PAGE_SIZE, bs) != PAGE_SIZE) {
         fprintf(stderr, "Erro: falha ao ler a página %d do BACKING_STORE.bin\n", pagina);
@@ -152,27 +191,38 @@ int main(int argc, char *argv[])
         int pagina = (enderecos[i] >> 8) & 0xFF;
         int offset = enderecos[i] & 0xFF;
 
-        int frame = tabela_paginas[pagina];
-        if (frame == -1) {
-            frame = carrega_pagina(bs, pagina, alg_pagina);
+        int frame;
+        int idx = busca_tlb(pagina);
+        if (idx != -1) {
+            frame = tlb[idx].frame;
+            tlb_hits++;
+        } else {
+            frame = tabela_paginas[pagina];
             if (frame == -1) {
-                fclose(saida); fclose(bs); free(enderecos);
-                return 1;
+                frame = carrega_pagina(bs, pagina, alg_pagina);
+                if (frame == -1) {
+                    fclose(saida); fclose(bs); free(enderecos);
+                    return 1;
+                }
             }
+            idx = posicao_tlb();
+            tlb[idx].pagina = pagina;
+            tlb[idx].frame  = frame;
+            tlb[idx].valida = 1;
         }
 
         ultimo_uso[frame] = ++relogio;
 
         int fisico = frame * PAGE_SIZE + offset;
         fprintf(saida, "Virtual address: %d TLB: %d Physical address: %d Value: %d\n",
-                enderecos[i], -1, fisico, memoria[fisico]);
+                enderecos[i], idx, fisico, memoria[fisico]);
     }
 
     fprintf(saida, "Number of Translated Addresses = %d\n", qtd);
     fprintf(saida, "Page Faults = %d\n", page_faults);
     fprintf(saida, "Page Fault Rate = %.3f\n", (double) page_faults / qtd);
-    fprintf(saida, "TLB Hits = %d\n", 0);
-    fprintf(saida, "TLB Hit Rate = %.3f\n", 0.0);
+    fprintf(saida, "TLB Hits = %d\n", tlb_hits);
+    fprintf(saida, "TLB Hit Rate = %.3f\n", (double) tlb_hits / qtd);
 
     fclose(saida);
     fclose(bs);

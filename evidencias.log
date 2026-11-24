@@ -166,4 +166,29 @@ TLB Hit Rate = 0.000
 [?2004lgcc -Wall -Wextra -g -DFRAMES=128 -o vm vm.c -pthread
 [?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ make clean
 [?2004lrm -f vm correct.txt
-[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [K]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [K]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [K]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [K]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ 
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [K]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [K]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [K]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [K]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [K]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [K]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [K]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [7mps -o comm= -p $PPID   [27mps -o comm= -p $PPID   
+[?2004lscript
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [7mmake clean; make[27mmake clean; make
+[?2004lrm -f vm correct.txt
+gcc -Wall -Wextra -g -DFRAMES=128 -o vm vm.c -pthread
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [7m./vm addresses.txt lru fifo; diff correct.txt esperado.t[27m[7mx[27m[7mt && echo "IGUAL AO GABARITO"[27m[A]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ ./vm addresses.txt lru fifo; diff correct.txt esperado.txt && echo "IGUAL AO GABARITO"
+[?2004lIGUAL AO GABARITO
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [7mprintf '0\n' > /tmp/z.txt[27mprintf '0\n' > /tmp/z.txt
+[?2004l[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [7m./vm /tmp/z.txt lru fifo; cat correct.txt[27m./vm /tmp/z.txt lru fifo; cat correct.txt4[K
+[?2004lVirtual address: 0 TLB: 0 Physical address: 0 Value: 0
+Number of Translated Addresses = 1
+Page Faults = 0
+Page Fault Rate = 0.000
+TLB Hits = 1
+TLB Hit Rate = 1.000
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [7mmake clean; make FRAMES=8[27mmake clean; make FRAMES=8
+[?2004lrm -f vm correct.txt
+gcc -Wall -Wextra -g -DFRAMES=8 -o vm vm.c -pthread
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [7m./vm addresses.txt lru fifo[27m./vm addresses.txt lru fifo
+[?2004l[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [7mdiff <(awk '{print $NF}' correct.txt | head -1000) <(awk[27m[7m [27m[7m'{print $NF}' esperado.txt | head -1000) | grep -c '^<' [27m
+[7mmake clean; make[27m[A[A]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ diff <(awk '{print $NF}' correct.txt | head -1000) <(awk '{print $NF}' esperado.txt | head -1000) | grep -c '^<'
+make clean; make
+[?2004l11
+rm -f vm correct.txt
+gcc -Wall -Wextra -g -DFRAMES=128 -o vm vm.c -pthread
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ 
