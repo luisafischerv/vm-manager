@@ -373,4 +373,135 @@ sys	0m0.883s
 ==79066== For lists of detected and suppressed errors, rerun with: -s
 ==79066== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 341 from 3)
 [?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [7mgit add vm.c Makefile evidencias.log[27mgit add vm.c Makefile evidencias.log
+[?2004l[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [7mgit commit -m "Busca na TLB com uma thread por entrada"[27m[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cgit commit -m "Busca na TLB com uma thread por entrada"
+[?2004l[main bf8ed62] Busca na TLB com uma thread por entrada
+ 3 files changed, 112 insertions(+), 4 deletions(-)
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [7mgit push[27mgit push
+[?2004lUsername for 'https://github.com': ^C
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ git pushcommit -m "Busca na TLB com uma thread por entrada"[19Padd vm.c Makefile evidencias.logvalgrind --tool=helgrind ./vm /tmp/peq.txt lru fifo 2>&1 | tail -3[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[29Phead -20 addresses.txt > /tmp/peq.txtvalgrind --tool=helgrind ./vm addresses.txt lru fifo 2>&1 | tail -3[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[35Ptime ./vm addresses.txt lru fifo[12Pail -5 correct.txt ./vm addresses.txt lru lrudiff correct.txt esperado.txt && echo "IGUAL AO GABARITO"[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[30P./vm addresses.txt lru fifomake[K clean
+[?2004lrm -f vm correct.txt
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ make clean[K[K[K[K[K[K
+[?2004lgcc -Wall -Wextra -g -DFRAMES=128 -DUSA_TLB=1 -DUSA_THREADS=1 -o vm vm.c -pthread
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [7mbash tests/roda_testes.sh[27mbash tests/roda_testes.sh
+[?2004l===== Erros de argumento
+----- ./vm 
+Uso: ./vm <arquivo_de_enderecos> <fifo|lru> <fifo|lru>
+codigo de saida: 1
+----- ./vm addresses.txt lru
+Uso: ./vm <arquivo_de_enderecos> <fifo|lru> <fifo|lru>
+codigo de saida: 1
+----- ./vm addresses.txt lru fifo extra
+Uso: ./vm <arquivo_de_enderecos> <fifo|lru> <fifo|lru>
+codigo de saida: 1
+----- ./vm addresses.txt LRU fifo
+Erro: algoritmo inválido ('LRU', 'fifo'); use fifo ou lru
+codigo de saida: 1
+----- ./vm addresses.txt lru fif
+Erro: algoritmo inválido ('lru', 'fif'); use fifo ou lru
+codigo de saida: 1
+----- ./vm tests/nao_existe.txt lru fifo
+Erro: não foi possível abrir 'tests/nao_existe.txt': No such file or directory
+codigo de saida: 1
+===== Erros de formato
+----- ./vm tests/vazio.txt lru fifo
+Erro: o arquivo 'tests/vazio.txt' está vazio
+codigo de saida: 1
+----- ./vm tests/linha_em_branco.txt lru fifo
+Erro: formato inválido em 'tests/linha_em_branco.txt', linha 2: "" (esperado um inteiro entre 0 e 65535 por linha)
+codigo de saida: 1
+----- ./vm tests/texto.txt lru fifo
+Erro: formato inválido em 'tests/texto.txt', linha 2: "abc" (esperado um inteiro entre 0 e 65535 por linha)
+codigo de saida: 1
+----- ./vm tests/negativo.txt lru fifo
+Erro: formato inválido em 'tests/negativo.txt', linha 2: "-5" (esperado um inteiro entre 0 e 65535 por linha)
+codigo de saida: 1
+----- ./vm tests/acima_65535.txt lru fifo
+Erro: formato inválido em 'tests/acima_65535.txt', linha 2: "65536" (esperado um inteiro entre 0 e 65535 por linha)
+codigo de saida: 1
+----- ./vm tests/lixo_depois.txt lru fifo
+Erro: formato inválido em 'tests/lixo_depois.txt', linha 2: "123abc" (esperado um inteiro entre 0 e 65535 por linha)
+codigo de saida: 1
+===== Arquivo com CRLF (deve ser aceito)
+----- ./vm tests/crlf_valido.txt lru fifo
+codigo de saida: 0
+Virtual address: 16916 TLB: 0 Physical address: 20 Value: 0
+Virtual address: 62493 TLB: 1 Physical address: 285 Value: 0
+Virtual address: 30198 TLB: 2 Physical address: 758 Value: 29
+Number of Translated Addresses = 3
+Page Faults = 3
+Page Fault Rate = 1.000
+TLB Hits = 0
+TLB Hit Rate = 0.000
+===== Endereco unico 0 com memoria vazia (esperado: 1 fault, 0 hits)
+----- ./vm tests/endereco_zero.txt lru lru
+codigo de saida: 0
+Page Faults = 1
+TLB Hits = 0
+===== Paginas 0-15, 0, 16, 0 (esperado: TLB fifo 1 hit, TLB lru 2 hits)
+----- ./vm tests/tlb_fifo_vs_lru.txt lru fifo
+codigo de saida: 0
+TLB Hits = 1
+----- ./vm tests/tlb_fifo_vs_lru.txt lru lru
+codigo de saida: 0
+TLB Hits = 2
+===== Gabarito (lru fifo)
+----- ./vm addresses.txt lru fifo
+codigo de saida: 0
+IGUAL AO GABARITO
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [7mvalgrind --leak-check=full --track-fds=yes ./vm addresses.txt lru fi[27m[7mf[27m[7mo 2>&1 | tail -15[27m[A]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ valgrind --leak-check=full --track-fds=yes ./vm addresses.txt lru fifo 2>&1 | tail -15
+[?2004l==96321== Copyright (C) 2002-2024, and GNU GPL'd, by Julian Seward et al.
+==96321== Using Valgrind-3.26.0 and LibVEX; rerun with -h for copyright info
+==96321== Command: ./vm addresses.txt lru fifo
+==96321== 
+==96321== 
+==96321== FILE DESCRIPTORS: 3 open (3 inherited) at exit.
+==96321== 
+==96321== HEAP SUMMARY:
+==96321==     in use at exit: 0 bytes in 0 blocks
+==96321==   total heap usage: 12,011 allocs, 12,011 frees, 3,282,888 bytes allocated
+==96321== 
+==96321== All heap blocks were freed -- no leaks are possible
+==96321== 
+==96321== For lists of detected and suppressed errors, rerun with: -s
+==96321== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [7mvalgrind --leak-check=full ./vm tests/negativo.txt lru fifo 2>&1 | t[27m[7ma[27m[7mil -8[27m[A]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ valgrind --leak-check=full ./vm tests/negativo.txt lru fifo 2>&1 | tail -8
+[?2004l==112323== HEAP SUMMARY:
+==112323==     in use at exit: 0 bytes in 0 blocks
+==112323==   total heap usage: 3 allocs, 3 frees, 8,664 bytes allocated
+==112323== 
+==112323== All heap blocks were freed -- no leaks are possible
+==112323== 
+==112323== For lists of detected and suppressed errors, rerun with: -s
+==112323== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ valgrind --leak-check=full ./vm tests/negativo.txt lru fifo 2>&1 | tail -8[A]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C--track-fds=yes ./vm addresses.txt lru fifo 2>&1 | tail -15[A]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [43Pbash tests/roda_testes.sh
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cmake[K clean
+[?2004lrm -f vm correct.txt
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [7mmake THREADS=0; time ./vm addresses.txt lru fifo[27mmake THREADS=0; time ./vm addresses.txt lru fifo
+[?2004lgcc -Wall -Wextra -g -DFRAMES=128 -DUSA_TLB=1 -DUSA_THREADS=0 -o vm vm.c -pthread
+
+real	0m0.163s
+user	0m0.000s
+sys	0m0.023s
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ make THREADS=0; time ./vm addresses.txt lru fifoclean[Kvalgrind --leak-check=full ./vm tests/negativo.txt lru fifo 2>&1 | tail -8[A]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ make clean[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+[?2004lrm -f vm correct.txt
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ make clean[K[K[K[K[K
+[?2004lgcc -Wall -Wextra -g -DFRAMES=128 -DUSA_TLB=1 -DUSA_THREADS=1 -o vm vm.c -pthread
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [7mtime ./vm addresses.txt lru fifo[27mtime ./vm addresses.txt lru fifo
+[?2004l
+real	0m0.897s
+user	0m0.047s
+sys	0m0.735s
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [K]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [K]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ git status
+[?2004lOn branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	[31mmodified:   .gitignore[m
+	[31mmodified:   evidencias.log[m
+
+no changes added to commit (use "git add" and/or "git commit -a")
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [7mgit add .gitignore evidencias.log[27mgit add .gitignore evidencias.log
 [?2004l
