@@ -508,4 +508,9 @@ no changes added to commit (use "git add" and/or "git commit -a")
 [?2004l[main 4156e0a] Testes de tratamento de erro
  2 files changed, 132 insertions(+)
 [?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [7mgit push[27mgit push
-[?2004lUsername for 'https://github.com': 
+[?2004lUsername for 'https://github.com': ^C
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ make clean
+[?2004lrm -f vm correct.txt
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ make
+[?2004lgcc -Wall -Wextra -g -DFRAMES=128 -DUSA_TLB=1 -DUSA_THREADS=1 -o vm vm.c -pthread
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ 
