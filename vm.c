@@ -27,12 +27,14 @@ typedef struct {
     int pagina;
     int frame;
     int valida;
+    long ultimo_uso;
 } EntradaTLB;
 
 static EntradaTLB tlb[TLB_SIZE];
 static int tlb_usadas = 0;
 static int tlb_fifo = 0;
 static int tlb_hits = 0;
+static long relogio_tlb = 0;
 
 static int busca_tlb(int pagina)
 {
@@ -42,12 +44,22 @@ static int busca_tlb(int pagina)
     return -1;
 }
 
-static int posicao_tlb(void)
+static int posicao_tlb(int alg)
 {
     if (tlb_usadas < TLB_SIZE)
         return tlb_usadas++;
-    int v = tlb_fifo;
-    tlb_fifo = (tlb_fifo + 1) % TLB_SIZE;
+    if (alg == FIFO) {
+        int v = tlb_fifo;
+        tlb_fifo = (tlb_fifo + 1) % TLB_SIZE;
+        return v;
+    }
+    for (int i = 0; i < TLB_SIZE; i++)
+        if (!tlb[i].valida)
+            return i;
+    int v = 0;
+    for (int i = 1; i < TLB_SIZE; i++)
+        if (tlb[i].ultimo_uso < tlb[v].ultimo_uso)
+            v = i;
     return v;
 }
 
@@ -196,6 +208,7 @@ int main(int argc, char *argv[])
         if (idx != -1) {
             frame = tlb[idx].frame;
             tlb_hits++;
+            tlb[idx].ultimo_uso = ++relogio_tlb;
         } else {
             frame = tabela_paginas[pagina];
             if (frame == -1) {
@@ -205,10 +218,11 @@ int main(int argc, char *argv[])
                     return 1;
                 }
             }
-            idx = posicao_tlb();
+            idx = posicao_tlb(alg_tlb);
             tlb[idx].pagina = pagina;
             tlb[idx].frame  = frame;
             tlb[idx].valida = 1;
+            tlb[idx].ultimo_uso = ++relogio_tlb;
         }
 
         ultimo_uso[frame] = ++relogio;

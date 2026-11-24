@@ -191,4 +191,71 @@ gcc -Wall -Wextra -g -DFRAMES=8 -o vm vm.c -pthread
 [?2004l11
 rm -f vm correct.txt
 gcc -Wall -Wextra -g -DFRAMES=128 -o vm vm.c -pthread
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [?2004l
+exit
+Script started on 2026-11-24 10:49:24-03:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="86" LINES="12"]
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [7mdate[27mdate
+[?2004lTue Nov 24 10:49:30 -03 2026
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ make clean
+[?2004lrm -f vm correct.txt
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ make
+[?2004lgcc -Wall -Wextra -g -DFRAMES=128 -o vm vm.c -pthread
+[01m[Kvm.c:66:12:[m[K [01;31m[Kerror: [m[Kconflicting types for ‘[01m[Kposicao_tlb[m[K’; have ‘[01m[Kint(void)[m[K’
+   66 | static int [01;31m[Kposicao_tlb[m[K(void)
+      |            [01;31m[K^~~~~~~~~~~[m[K
+[01m[Kvm.c:47:12:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Kposicao_tlb[m[K’ with type ‘[01m[Kint(int)[m[K’
+   47 | static int [01;36m[Kposicao_tlb[m[K(int alg)
+      |            [01;36m[K^~~~~~~~~~~[m[K
+[01m[Kvm.c:[m[K In function ‘[01m[Kmain[m[K’:
+[01m[Kvm.c:230:19:[m[K [01;31m[Kerror: [m[Ktoo many arguments to function ‘[01m[Kposicao_tlb[m[K’; expected 0, have 1
+  230 |             idx = [01;31m[Kposicao_tlb[m[K([32m[Kalg_tlb[m[K);
+      |                   [01;31m[K^~~~~~~~~~~[m[K [32m[K~~~~~~~[m[K
+[01m[Kvm.c:66:12:[m[K [01;36m[Knote: [m[Kdeclared here
+   66 | static int [01;36m[Kposicao_tlb[m[K(void)
+      |            [01;36m[K^~~~~~~~~~~[m[K
+[01m[Kvm.c:[m[K At top level:
+[01m[Kvm.c:47:12:[m[K [01;35m[Kwarning: [m[K‘[01m[Kposicao_tlb[m[K’ defined but not used [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wno-unused-function-Wunused-function]8;;[m[K]
+   47 | static int [01;35m[Kposicao_tlb[m[K(int alg)
+      |            [01;35m[K^~~~~~~~~~~[m[K
+make: *** [Makefile:9: vm] Error 1
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [K]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [K]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [K]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [K]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [K]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ make clean
+[?2004lrm -f vm correct.txt
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ make
+[?2004lgcc -Wall -Wextra -g -DFRAMES=128 -o vm vm.c -pthread
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [K]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [K]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [7m./vm addresses.txt lru fifo; diff co[27m[7mr[27m[7mrect.txt esperado.txt && echo "IGUAL AO GABARITO"[27m[A./vm addresses.txt lru fifo; diff correct.txt esperado.txt && echo "IGUAL AO GABARITO"
+[?2004lIGUAL AO GABARITO
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [7m./vm addresses.txt lru lru; tail -5 [27m[7mc[27m[7morrect.txt[27m[A]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ ./vm addresses.txt lru lru; tail -5 correct.txt
+[?2004lNumber of Translated Addresses = 1000
+Page Faults = 539
+Page Fault Rate = 0.539
+TLB Hits = 55
+TLB Hit Rate = 0.055
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [7mdiff <(awk '{print $8, $NF}' correct[27m[7m.[27m[7mtxt | head -1000) <(awk '{print $8, $NF}' esperado.txt | head -1000) | head; echo "--[27m[7m-[27m[7m fim"[27m[A[A]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ diff <(awk '{print $8, $NF}' correct.txt | head -1000) <(awk '{print $8, $NF}' esperado.txt | head -1000) | head; echo "--- fim"
+[?2004l--- fim
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [7m( for p in $(seq 0 15); do echo $((p[27m[7m*[27m[7m256)); done; echo 0; echo 4096; echo 0 ) > /tmp/lru.txt[27m[A( for p in $(seq 0 15); do echo $((p*256)); done; echo 0; echo 4096; echo 0 ) > /tmp/lru.txt
+[?2004l[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [7m./vm /tmp/lru.txt lru fifo; grep "TL[27m[7mB[27m[7m Hits" correct.txt[27m[A]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ ./vm /tmp/lru.txt lru fifo; grep "TLB Hits" correct.txt
+[?2004l[01;31m[KTLB Hits[m[K = 1
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [7m./vm /tmp/lru.txt lru lru;  grep "TL[27m[7mB[27m[7m Hits" correct.txt[27m[A]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ ./vm /tmp/lru.txt lru lru;  grep "TLB Hits" correct.txt
+[?2004l[01;31m[KTLB Hits[m[K = 2
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [K]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [7m./vm /tmp/z.txt lru lru[27m./vm /tmp/z.txt lru lru
+[?2004lErro: não foi possível abrir '/tmp/z.txt': No such file or directory
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [7mprintf '0\n' > /tmp/z.txt[27mprintf '0\n' > /tmp/z.txt
+[?2004l[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [7m./vm /tmp/z.txt lru lru[27m./vm /tmp/z.txt lru lru
+[?2004l[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [7mgrep -E "Faults =|Hits =" correct.tx[27m[7mt[27m[A]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ grep -E "Faults =|Hits =" correct.txt
+[?2004lPage [01;31m[KFaults =[m[K 1
+TLB [01;31m[KHits =[m[K 0
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ make clean
+[?2004lrm -f vm correct.txt
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [7mmake FRAMES=8[27mmake FRAMES=8
+[?2004lgcc -Wall -Wextra -g -DFRAMES=8 -o vm vm.c -pthread
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [7m./vm addresses.txt lru lr[27m./vm addresses.txt lru lr [Ky
+[?2004lErro: algoritmo inválido ('lru', 'lry'); use fifo ou lru
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ 
+[?2004l[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ ./vm addresses.txt lru lry[Ku
+[?2004l[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [7mdiff <(awk '{print $NF}' correct.txt[27m[7m [27m[7m| head -1000) <(awk '{print $NF}' esperado.txt | head -1000) | grep -c '^<'[27m[Adiff <(awk '{print $NF}' correct.txt | head -1000) <(awk '{print $NF}' esperado.txt | head -1000) | grep -c '^<'
+[?2004l0
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ make clean
+[?2004lrm -f vm correct.txt
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ make
+[?2004lgcc -Wall -Wextra -g -DFRAMES=128 -o vm vm.c -pthread
 [?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ 
