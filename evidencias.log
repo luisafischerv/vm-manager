@@ -316,4 +316,61 @@ TLB Hit Rate = 0.000
 [?2004lIGUAL AO GABARITO
 [?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [7m./vm addresses.txt fifo fifo; grep "[27m[7mP[27m[7mage Faults" correct.txt[27m[A]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ ./vm addresses.txt fifo fifo; grep "Page Faults" correct.txt
 [?2004l[01;31m[KPage Faults[m[K = 538
-[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [K]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [K]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [K]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ 
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [K]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [K]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [K]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [K]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ exit
+[?2004lexit
+
+Script done on 2026-11-24 12:21:30-03:00 [COMMAND_EXIT_CODE="0"]
+Script started on 2026-11-24 16:23:34-03:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="86" LINES="12"]
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ script -af evidencias.log[5Pps -o comm= -p $PPIDexit[K./vm addresses.txt fifo fifo; grep "Page Faults" correct.txt[A]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Clru fifo; diff correct.txt esperado.txt && echo "IGUAL AO GABARITO"[Amake [K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cclean
+[?2004lrm -f vm correct.txt
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ make cleanscript -af evidencias.log[5Pps -o comm= -p $PPIDexit[K./vm addresses.txt fifo fifo; grep "Page Faults" correct.txt[A]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Clru fifo; diff correct.txt esperado.txt && echo "IGUAL AO GABARITO"[Amake [K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+[?2004lgcc -Wall -Wextra -g -DFRAMES=128 -DUSA_TLB=1 -DUSA_THREADS=1 -o vm vm.c -pthread
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ ^V[Kexo-[K[Kit
+[?2004lexit
+
+Script done on 2026-11-24 16:24:06-03:00 [COMMAND_EXIT_CODE="0"]
+Script started on 2026-11-24 16:24:22-03:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="86" LINES="12"]
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ exitmake clean
+[?2004lrm -f vm correct.txt
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ make clean[6Pexitmake 
+[?2004lgcc -Wall -Wextra -g -DFRAMES=128 -DUSA_TLB=1 -DUSA_THREADS=1 -o vm vm.c -pthread
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [7m ./vm addresses.txt lru fifo[27m ./vm addresses.txt lru fifo
+[?2004l[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ make clean
+[?2004lrm -f vm correct.txt
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [7mmake THREADS=0[27mmake THREADS=0
+[?2004lgcc -Wall -Wextra -g -DFRAMES=128 -DUSA_TLB=1 -DUSA_THREADS=0 -o vm vm.c -pthread
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [7m./vm addresses.txt lru fifo[27m./vm addresses.txt lru fifo
+[?2004l[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ ./vm addresses.txt lru fifo[13Pmake THREADS=0[4Pclean[Kclean
+[?2004lrm -f vm correct.txt
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ make clean./vm addresses.txt lru fifo[13Pmake THREADS=0[4Pclean[K[K[K[K[K[K
+[?2004lgcc -Wall -Wextra -g -DFRAMES=128 -DUSA_TLB=1 -DUSA_THREADS=1 -o vm vm.c -pthread
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [7m./vm addresses.txt lru fifo[27m./vm addresses.txt lru fifo
+[?2004l[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [7mdiff correct.txt esperado.txt && ech[27m[7mo[27m[7m "IGUAL AO GABARITO"[27m[A]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ diff correct.txt esperado.txt && echo "IGUAL AO GABARITO"
+[?2004lIGUAL AO GABARITO
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [7m./vm addresses.txt lru lru[27m./vm addresses.txt lru lru
+[?2004l[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [7mtail -5 correct.txt [27mtail -5 correct.txt 
+[?2004lNumber of Translated Addresses = 1000
+Page Faults = 539
+Page Fault Rate = 0.539
+TLB Hits = 55
+TLB Hit Rate = 0.055
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [7mtime ./vm addresses.txt lru fifo[27m
+[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ctime ./vm addresses.txt lru fifo
+[A
+[?2004l
+real	0m1.064s
+user	0m0.075s
+sys	0m0.883s
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [7mvalgrind --tool=helgrind ./vm addres[27m[7ms[27m[7mes.txt lru fifo 2>&1 | tail -3[27m[A]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ valgrind --tool=helgrind ./vm addresses.txt lru fifo 2>&1 | tail -3
+[?2004l^C
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ valgrind --tool=helgrind ./vm addresses.txt lru fifo 2>&1 | tail -3
+[?2004l^C
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [7mhead -20 addresses.txt > /tmp/peq.txt[27mhead -20 addresses.txt > /tmp/peq.txt
+[?2004l[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [7mvalgrind --tool=helgrind ./vm /tmp/peq.txt lru fifo 2>&1 | tail -3[27m[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cvalgrind --tool=helgrind ./vm /tmp/peq.txt lru fifo 2>&1 | tail -3
+[?2004l==79066== the cost of reduced accuracy of conflicting-access information
+==79066== For lists of detected and suppressed errors, rerun with: -s
+==79066== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 341 from 3)
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [7mgit add vm.c Makefile evidencias.log[27mgit add vm.c Makefile evidencias.log
+[?2004l

@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <errno.h>
+#include <pthread.h>
 
 #define PAGE_SIZE    256
 #define NUM_PAGES    256
@@ -11,6 +12,9 @@
 #endif
 #ifndef USA_TLB
 #define USA_TLB      1
+#endif
+#ifndef USA_THREADS
+#define USA_THREADS  1
 #endif
 
 enum { FIFO, LRU };
@@ -43,6 +47,47 @@ static int busca_tlb(int pagina)
 {
     for (int i = 0; i < TLB_SIZE; i++)
         if (tlb[i].valida && tlb[i].pagina == pagina)
+            return i;
+    return -1;
+}
+
+typedef struct {
+    int indice;
+    int pagina;
+    int achou;
+} ArgBusca;
+
+static void *compara_entrada(void *arg)
+{
+    ArgBusca *a = (ArgBusca *) arg;
+    a->achou = tlb[a->indice].valida && tlb[a->indice].pagina == a->pagina;
+    return NULL;
+}
+
+static int busca_tlb_threads(int pagina)
+{
+    pthread_t t[TLB_SIZE];
+    ArgBusca args[TLB_SIZE];
+    int criadas = 0;
+
+    for (int i = 0; i < TLB_SIZE; i++) {
+        args[i].indice = i;
+        args[i].pagina = pagina;
+        args[i].achou  = 0;
+        int erro = pthread_create(&t[i], NULL, compara_entrada, &args[i]);
+        if (erro != 0) {
+            fprintf(stderr, "Erro: falha ao criar a thread %d da TLB: %s\n", i, strerror(erro));
+            break;
+        }
+        criadas++;
+    }
+    for (int i = 0; i < criadas; i++)
+        pthread_join(t[i], NULL);
+    if (criadas < TLB_SIZE)
+        return -2;
+
+    for (int i = 0; i < TLB_SIZE; i++)
+        if (args[i].achou)
             return i;
     return -1;
 }
@@ -208,8 +253,13 @@ int main(int argc, char *argv[])
 
         int frame;
         int idx = - 1;
-        if (USA_TLB)
-            idx = busca_tlb(pagina);
+        if (USA_TLB) {
+            idx = USA_THREADS ? busca_tlb_threads(pagina) : busca_tlb(pagina);
+            if (idx == -2) {
+                fclose(saida); fclose(bs); free(enderecos);
+                return 1;
+            }
+        }
         if (idx != -1) {
             frame = tlb[idx].frame;
             tlb_hits++;
