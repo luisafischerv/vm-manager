@@ -9,6 +9,9 @@
 #ifndef FRAMES
 #define FRAMES       128
 #endif
+#ifndef USA_TLB
+#define USA_TLB      1
+#endif
 
 enum { FIFO, LRU };
 
@@ -204,7 +207,9 @@ int main(int argc, char *argv[])
         int offset = enderecos[i] & 0xFF;
 
         int frame;
-        int idx = busca_tlb(pagina);
+        int idx = - 1;
+        if (USA_TLB)
+            idx = busca_tlb(pagina);
         if (idx != -1) {
             frame = tlb[idx].frame;
             tlb_hits++;
@@ -218,13 +223,14 @@ int main(int argc, char *argv[])
                     return 1;
                 }
             }
-            idx = posicao_tlb(alg_tlb);
-            tlb[idx].pagina = pagina;
-            tlb[idx].frame  = frame;
-            tlb[idx].valida = 1;
-            tlb[idx].ultimo_uso = ++relogio_tlb;
+            if (USA_TLB) {
+                idx = posicao_tlb(alg_tlb);
+                tlb[idx].pagina = pagina;
+                tlb[idx].frame  = frame;
+                tlb[idx].valida = 1;
+                tlb[idx].ultimo_uso = ++relogio_tlb;
+            }
         }
-
         ultimo_uso[frame] = ++relogio;
 
         int fisico = frame * PAGE_SIZE + offset;
