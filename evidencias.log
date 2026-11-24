@@ -504,4 +504,8 @@ Changes not staged for commit:
 
 no changes added to commit (use "git add" and/or "git commit -a")
 [?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [7mgit add .gitignore evidencias.log[27mgit add .gitignore evidencias.log
-[?2004l
+[?2004l[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [7mgit commit -m "Testes de tratamento de erro"[27mgit commit -m "Testes de tratamento de erro"
+[?2004l[main 4156e0a] Testes de tratamento de erro
+ 2 files changed, 132 insertions(+)
+[?2004h]0;lfvm@Lusa-Notebook: /mnt/c/Users/luisa/vm-manager[01;32mlfvm@Lusa-Notebook[00m:[01;34m/mnt/c/Users/luisa/vm-manager[00m$ [7mgit push[27mgit push
+[?2004lUsername for 'https://github.com': 
